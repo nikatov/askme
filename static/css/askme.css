@@ -1,38 +1,67 @@
-    .searchbar{
+    .html {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    /* Хак для применения стиля к браузеру safary версии 9.0 и выше, в связи с поддержкой backdrop-filter */
+    @supports (-webkit-marquee-repetition:infinite) and (object-fit:fill) {
+      .header {
+        -webkit-backdrop-filter: blur(5px) grayscale(0.8);
+        background-color: transparent !important;
+      }
+    }
+
+    .header {
+      position: fixed;
+      z-index: 1030;
+      background-color: rgba(255,255,255, 0.9);
+      box-shadow: 0px 0px 25px rgba(0,0,0, 1),
+        inset 0px 0px 25px rgba(255,255,255,0.6);
+    }
+
+    .indent {
+      height: 85px;
+    }
+
+    .searchbar {
     margin-bottom: auto;
     margin-top: auto;
     height: 50px;
-    background-color: white;
+    background-color: rgba(171, 215, 218, 0.5);
     border-radius: 30px;
     padding: 5px;
     }
 
-    .search_input{
-    color: gray;
+    .search_input {
+    color: black;
     border: 0;
     outline: 0;
     background: none;
     width: 0;
-    caret-color:transparent;
+    caret-color:black;
     padding-top: 8px;
     vertical-align: middle;
     transition: width 0.4s linear;
     }
 
-    .searchbar:hover > .search_input{
+    .searchbar:hover {
+      padding-left: 20px;
+    }
+
+    .searchbar:hover > .search_input {
     padding-top: 8px;
-    caret-color: gray;
+    caret-color: black;
     width: 25vw;
     transition: width 0.4s linear;
     }
 
-    .searchbar:hover > .search_icon{
-    background: #f8f9fa;
+    .searchbar:hover > .search_icon {
+    background: rgba(255,255,255, 0.5);
     color: gray;
     text-decoration: none;
     }
 
-    .search_icon{
+    .search_icon {
     height: 40px;
     width: 40px;
     float: right;
@@ -44,15 +73,43 @@
     text-decoration: none;
     }
 
-    .avatar{
-      width: 50px;
-      height: 50px;
-      margin-right: 3vw;
+    .stamp-words {
+      font-size: 60px;
+      background-color: rgba(0, 0, 0, 0.6);
+          -webkit-background-clip: text;
+          -moz-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
     }
 
-    .question{
-      margin-left: 10;
-      margin-right: 10;
-      margin-bottom: 10;
-      background-color: gray;
+    .avatar {
+      width: 50px;
+      height: 50px;
+    }
+
+    .questions-header {
+      font-size: 30px;
+    }
+
+    .question-item {
+      border: solid 1px gray;
+      margin-bottom: 30px;
+      box-shadow: 5px 5px 10px 5px #abd7da;
+      transition: 0.3s;
+    }
+
+    .question-item:hover {
+      border-color: transparent;
+    }
+
+    .question-item:active {
+      transform: scale(0.98);
+      box-shadow: 3px 3px 10px 2px #abd7da;
+      transition: 0.3s;
+    }
+
+    #counter:hover {
+      color: inherit;
+      background-color: inherit;
     }
