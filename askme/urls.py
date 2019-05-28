@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from question import views
+
 urlpatterns = [
+    path("", views.index),
     path('admin/', admin.site.urls),
+    path('topic/<int:pk>/', views.TopicView.as_view()),
+    path('topic/<int:topic_pk>/comment_add', views.CommentAdd.as_view())
 ]

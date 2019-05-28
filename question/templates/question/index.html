@@ -1,0 +1,13 @@
+{% extends 'question/base.html' %}
+
+{% block content %}
+
+<h1>Список тем</h1>
+
+<ul>
+  {% for topic in topics %}
+    <li><a href="/topic/{{ topic.pk }}">{{ topic.subject }}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
