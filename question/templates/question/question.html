@@ -1,0 +1,55 @@
+{% extends "question/base.html" %}
+
+{% load static %}
+{% block content %}
+
+<div class="container-fluid pb-3 b-shadow">
+  <div class="row mb-3">
+    <div class="col-3 text-center img-wrapper">
+      <!-- <img src="{% static "img/anonym.jpg" %}" alt="Нет аватара"> -->
+    </div>
+    <div class="col-9">
+      <h2>{{ question.name }}</h2>
+      <!-- <a class="h2" href="{% url 'question' question.id %}">{{ question.name }}</a> -->
+      <div>
+        {{ question.text }}
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-around t-shadow">
+    <div class="col-3 text-center">
+      <div class="btn-group" role="group" aria-label="Toolbar button group">
+        <button type="submit" name="button" class="btn py-0 btn-outline-dark">-</button>
+        <span class="btn py-0 btn-outline-dark counter">{{ question.like_num }}</span>
+        <button type="submit" name="button" class="btn py-0 btn-outline-dark">+</button>
+      </div>
+    </div>
+    <div class="col-9 ">
+      <span>Tags: </span>
+      <a href="#">black-jack</a>
+      <a href="#">bender</a>
+    </div>
+  </div>
+</div>
+
+{% for answer in answers %}
+<div class="container answer-item">
+  <div class="row p-3 align-items-center">
+    <div class="col-2 text-center">
+      <!-- <img class="d-block mx-auto mb-2 rounded-circle s-50" src="{% static "img/anonym.jpg" %}" alt="Нет аватара"> -->
+      <div class="btn-group" role="group" aria-label="Toolbar button group">
+        <button type="submit" name="button" class="btn py-0 btn-outline-dark">-</button>
+        <span class="btn py-0 btn-outline-dark counter">{{ answer.like_num }}</span>
+        <button type="submit" name="button" class="btn py-0 btn-outline-dark">+</button>
+      </div>
+    </div>
+    <div class="col-10">
+      <div>
+        {{ answer.text }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}

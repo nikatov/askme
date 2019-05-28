@@ -1,13 +1,49 @@
-{% extends 'question/base.html' %}
+{% extends "question/base.html" %}
 
+{% load static %}
 {% block content %}
 
-<h1>Список тем</h1>
-
-<ul>
-  {% for topic in topics %}
-    <li><a href="/topic/{{ topic.pk }}">{{ topic.subject }}</a></li>
-  {% endfor %}
-</ul>
+      <!-- Questions header -->
+      <div class="container">
+        <div class="d-flex justify-content-start align-items-center pl-4 pb-4">
+          <div class="questions-header">
+            <span class="mr-5">New Questions</span>
+          </div>
+          <button type="submit" name="button" class="btn btn-outline-dark">Hot questions</button>
+        </div>
+      </div>
+      {% for question in questions %}
+      <div class="container question-item">
+        <div class="row p-3 align-items-center linkblock" onclick="location.href='{% url "question" question.id %}'">
+        <!-- <div class="row p-3 align-items-center"> -->
+          <div class="col-2 text-center">
+            <img class="d-block mx-auto mb-2 rounded-circle s-50" src="{% static "img/anonym.jpg" %}" alt="Нет аватара">
+            <div class="btn-group" role="group" aria-label="Toolbar button group">
+              <button type="submit" name="button" class="btn py-0 btn-outline-dark">-</button>
+              <span class="btn py-0 btn-outline-dark counter">{{ question.like_num }}</span>
+              <button type="submit" name="button" class="btn py-0 btn-outline-dark">+</button>
+            </div>
+          </div>
+          <div class="col-10">
+            <h2>{{ question.name }}</h2>
+            <!-- <a class="h2" href="{% url 'question' question.id %}">{{ question.name }}</a> -->
+            <div>
+              {{ question.text }}
+            </div>
+            <div class="row">
+              <div class="col-2">
+                <a href="/topic/{{ topic.pk }}">{{ topic.subject }}</a>
+                <a href="{% url 'question' question.id %}">Answer ({{ question.answer_num }})</a>
+              </div>
+              <div class="col-10">
+                <span>Tags: </span>
+                <a href="#">black-jack</a>
+                <a href="#">bender</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
 
 {% endblock %}
